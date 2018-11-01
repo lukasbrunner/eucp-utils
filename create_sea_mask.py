@@ -176,8 +176,8 @@ def flip_antimeridian(ds, to='Pacific', lonn=None):
 def get_mask(da):
     latn = get_latitude_name(da)
     lonn = get_longitude_name(da)
-    mask = regionmask.defined_regions.natural_earth.land_110.mask(
-        da, wrap_lon=True) == 0
+    da = flip_antimeridian(da, lonn=lonn)
+    mask = regionmask.defined_regions.natural_earth.land_110.mask(da) == 0
     mask.name = 'land_sea_mask'
     mask.attrs = {
         'long_name': 'Land-sea mask',

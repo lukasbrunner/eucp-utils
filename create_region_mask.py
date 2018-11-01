@@ -168,10 +168,10 @@ def flip_antimeridian(ds, to='Pacific', lonn=None):
 def get_mask(da, regions):
     latn = get_latitude_name(da)
     lonn = get_longitude_name(da)
+    da = flip_antimeridian(da, lonn=lonn)
     masks = []
     for key in regionmask.defined_regions.srex.map_keys(regions):
-        masks.append(
-            regionmask.defined_regions.srex.mask(da, wrap_lon=True) == key)
+        masks.append(regionmask.defined_regions.srex.mask(da) == key)
     mask = sum(masks)
     assert mask.max() == 1, 'regions are overlapping?'
     mask.name = 'region_mask'
