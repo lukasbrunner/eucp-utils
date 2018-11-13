@@ -220,7 +220,7 @@ def read_config():
         dest='filename', type=str,
         help='A file with a latitude-longitude grid as basis for the mask')
     parser.add_argument(
-        '--region', '-r', dest='regions', default=['NEU, CEU, MED'], nargs='+',
+        '--region', '-r', dest='regions', default=['NEU', 'CEU', 'MED'], nargs='+',
         choices=['ALA', 'CGI', 'WNA', 'CNA', 'ENA', 'CAM', 'AMZ', 'NEB', 'WSA',
                  'SSA', 'NEU', 'CEU', 'MED', 'SAH', 'WAF', 'EAF', 'SAF', 'NAS',
                  'WAS', 'CAS', 'TIB', 'EAS', 'SAS', 'SEA', 'NAU', 'SAU'],
