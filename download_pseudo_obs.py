@@ -16,6 +16,9 @@ import urllib.request
 import time
 from bs4 import BeautifulSoup
 
+# Change save path here
+fullpath_pattern = '/net/h2o/climphys/lukbrunn/Data/InputData/PseudoOBS/EUCP/{filename}'
+
 url = 'https://zenodo.org/record/3892252'
 base_url = 'https://zenodo.org/'
 
@@ -28,5 +31,5 @@ for element in elements:
     filename = re.findall('PSEUDOobs\_.*\.tar\.gz', dowload_url)[0]
     urllib.request.urlretrieve(
         dowload_url,
-        filename=f'/net/h2o/climphys/lukbrunn/Data/InputData/PseudoOBS/EUCP/{filename}')
+        filename=fullpath_pattern.format(filename=filename))
     time.sleep(5)
